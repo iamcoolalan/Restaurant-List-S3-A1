@@ -24,7 +24,8 @@ function sortOption(query) {
 
 //home page
 router.get('/', (req, res) => {
-  Restaurants.find()
+  const userId = req.user._id
+  Restaurants.find({ userId })
     .lean()
     .sort({ name: 'asc' })
     .then(restaurants => res.status(200).render('index', { restaurants }))

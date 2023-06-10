@@ -7,13 +7,15 @@
         <div class="card-body">
           <h5 class="card-title">Edit <b><u>{{ restaurant.name }}</u></b> info <i class="fa-solid fa-gear"></i></h5>
           <hr>
-          <form action="/restaurants/{{ restaurant._id }}?_method=PUT" method="POST" class="needs-validation" novalidate>
+          <form action="/restaurants/{{ restaurant._id }}?_method=PUT" method="POST" class="needs-validation"
+            novalidate>
             <div class="row mb-3 g-2">
               <label for="name" class="col-md-4 col-form-label">
                 Name
               </label>
               <div class="col-md-8">
-                <input type="text" name="name" placeholder="Restaurant name" class="form-control" id="name" value="{{ restaurant.name }}" required>
+                <input type="text" name="name" placeholder="Restaurant name" class="form-control" id="name"
+                  value="{{ restaurant.name }}" required>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -28,7 +30,8 @@
                 English name
               </label>
               <div class="col-md-8">
-                <input type="text" name="name_en" placeholder="English name" class="form-control" value="{{ restaurant.name_en }}" id="name-en" >
+                <input type="text" name="name_en" placeholder="English name" class="form-control"
+                  value="{{ restaurant.name_en }}" id="name-en">
               </div>
             </div>
 
@@ -37,8 +40,8 @@
                 Category
               </label>
               <div class="col-md-8">
-                <input list="categories" name="category" placeholder="Category" class="form-control" value="{{ restaurant.category }}" id="category"
-                  required>
+                <input list="categories" name="category" placeholder="Category" class="form-control"
+                  value="{{ restaurant.category }}" id="category" required>
                 <datalist id="categories">
                   <option>中東料理</option>
                   <option>義式餐廳</option>
@@ -61,7 +64,8 @@
                 Image
               </label>
               <div class="col-md-8">
-                <input type="text" name="image" placeholder="Image URL" class="form-control" value="{{ restaurant.image }}" id="image" required>
+                <input type="text" name="image" placeholder="Image URL" class="form-control"
+                  value="{{ restaurant.image }}" id="image" required>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -76,8 +80,8 @@
                 Location
               </label>
               <div class="col-md-8">
-                <input type="text" name="location" placeholder="Restaurant's address" class="form-control" value="{{ restaurant.location }}" id="location"
-                  required>
+                <input type="text" name="location" placeholder="Restaurant's address" class="form-control"
+                  value="{{ restaurant.location }}" id="location" required>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -92,8 +96,8 @@
                 Phone
               </label>
               <div class="col-md-8">
-                <input type="text" name="phone" placeholder="Restaurant's phone number" class="form-control" value="{{ restaurant.phone }}" id="phone"
-                  required>
+                <input type="text" name="phone" placeholder="Restaurant's phone number" class="form-control"
+                  value="{{ restaurant.phone }}" id="phone" required>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -108,8 +112,8 @@
                 Google map
               </label>
               <div class="col-md-8">
-                <input type="text" name="google_map" placeholder="Restaurant's google map URL" class="form-control" value="{{ restaurant.google_map }}"
-                  id="google_map" required>
+                <input type="text" name="google_map" placeholder="Restaurant's google map URL" class="form-control"
+                  value="{{ restaurant.google_map }}" id="google_map" required>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -124,7 +128,8 @@
                 Rating
               </label>
               <div class="col-md-8">
-                <input type="number" name="rating" class="form-control" placeholder="Rate your score between 0.0 ~ 5.0" value="{{ restaurant.rating }}" id="rating" step="0.1" min="0.0" max="5.0" required>
+                <input type="number" name="rating" class="form-control" placeholder="Rate your score between 0.0 ~ 5.0"
+                  value="{{ restaurant.rating }}" id="rating" step="0.1" min="0.0" max="5.0" required>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -139,7 +144,8 @@
                 Description
               </label>
               <div class="col-md-8">
-                <textarea id="description" name="description" placeholder="Type your description" class="form-control" rows="3" cols="66" required>{{ restaurant.description }}
+                <textarea id="description" name="description" placeholder="Type your description" class="form-control"
+                  rows="3" cols="66" required>{{ restaurant.description }}
                 </textarea>
                 <div class="valid-feedback">
                   Looks good!
@@ -178,7 +184,7 @@
             event.preventDefault()
             event.stopPropagation()
             form.classList.add('was-validated')
-          }         
+          }
         }, false)
       })
   })()

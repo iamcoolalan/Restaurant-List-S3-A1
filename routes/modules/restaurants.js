@@ -9,7 +9,9 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  req.body.userId = req.user._id
   const newRestaurant = req.body
+
   return Restaurants.create(newRestaurant)
     .then(() => res.status(302).redirect('/'))
     .catch(
@@ -21,9 +23,10 @@ router.post('/', (req, res) => {
 
 //detail page
 router.get('/:id', (req, res) => {
-  const id = req.params.id
+  const _id = req.params.id
+  const userId = req.user._id
 
-  return Restaurants.findById(id)
+  return Restaurants.findOne({_id, userId})
     .lean()
     .then(restaurant => {
       if (!restaurant) {
@@ -41,7 +44,10 @@ router.get('/:id', (req, res) => {
 
 //edit page
 router.get('/:id/edit', (req, res) => {
-  return Restaurants.findById(req.params.id)
+  const _id = req.params.id
+  const userId = req.user._id
+
+  return Restaurants.findOne({ _id, userId })
     .lean()
     .then(
       restaurant => {
@@ -59,10 +65,12 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id
+  const _id = req.params.id
+  const userId = req.user._id
+
   const update = req.body
 
-  return Restaurants.findById(id)
+  return Restaurants.findOne({ _id, userId })
     .then(restaurant => {
       if(!restaurant){
         res.status(404).render('errorPage', { error: `Can't find any result that matches this ID` })
@@ -71,7 +79,7 @@ router.put('/:id', (req, res) => {
         return restaurant.save()
       }
     })
-    .then(() => res.status(302).redirect(`/restaurants/${id}/edit`))
+    .then(() => res.status(302).redirect(`/restaurants/${_id}/edit`))
     .catch(
       error => {
         console.log(error)
@@ -81,9 +89,10 @@ router.put('/:id', (req, res) => {
 
 //delete function
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
+  const _id = req.params.id
+  const userId = req.user._id
 
-  return Restaurants.findById(id)
+  return Restaurants.findOne({ _id, userId })
     .then(restaurant => {
       if(!restaurant){
         res.status(404).render('errorPage', { error: `Can't find any result that matches this ID` })
