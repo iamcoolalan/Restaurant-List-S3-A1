@@ -38,12 +38,13 @@ router.get('/', (req, res) => {
 
 //search function
 router.get('/search', (req, res) => {
+  const userId = req.user._id
   const keyword = req.query.keyword.trim().toLowerCase()
   //use sort function which define before to sort the restaurant list
   const sort = sortOption(req.query)
   const error = `Can't not find any result with keyword:${keyword}`
 
-  return Restaurants.find()
+  return Restaurants.find({ userId })
     .lean()
     .sort(sort.condition)
     .then(restaurants => restaurants.filter(function (restaurant) {
