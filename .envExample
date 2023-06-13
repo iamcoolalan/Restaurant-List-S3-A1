@@ -2,6 +2,6 @@ FACEBOOK_CALLBACK = http://localhost:3000/auth/facebook/callback
 FACEBOOK_ID = Your Facebook developer project ID
 FACEBOOK_SECRET = Your Facebook developer project password
 MONGODB_URI =mongodb+srv://<Your MongoDB Account>:<Your MongoDB Password>@cluster0.xxxx.xxxx.net/<Your MongoDB Table><?retryWrites=true&w=majority
-SESSION_SECRET = ThisIsMySecret
+SESSION_SECRET = any string you want
 PORT = 3000
 

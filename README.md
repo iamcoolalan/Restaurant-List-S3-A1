@@ -1,9 +1,17 @@
 # Restaurant List
 A simple web application for restaurant fanatic
 
-![JavaScript Style Guide](./public/pictures/homepage.png)
+## Login & Register Features
 
-## Features
+![login](./public/pictures/login.png)
+![register](./public/pictures/register.png)
+
+- register first then login to use "Homepage Feature"
+- also can login via Facebook
+
+## Homepage Features
+
+![homepage](./public/pictures/homepage.png)
 
 - listing restaurant from MongoDB
 - create new restaurant
@@ -24,10 +32,15 @@ A simple web application for restaurant fanatic
    npm install
    ```
 
-4. after the installation complete,set env params to connect your MongoDB
+4. after the installation complete,set all env params(You can also see example on .envExample file)
 
    ```bash
-   MONGODB_URI=mongodb+srv://<Your MongoDB Account>:<Your MongoDB Password>@cluster0.xxxx.xxxx.net/<Your MongoDB Table><?retryWrites=true&w=majority
+   FACEBOOK_CALLBACK = http://localhost:3000/auth/facebook/callback
+   FACEBOOK_ID = Your Facebook developer project ID
+   FACEBOOK_SECRET = Your Facebook developer project password
+   MONGODB_URI =mongodb+srv://<Your MongoDB Account>:<Your MongoDB Password>@cluster0.xxxx.xxxx.net/<Your MongoDB Table><?retryWrites=true&w=majority
+   SESSION_SECRET = any string you want
+   PORT = 3000
    ```
 
 5. create test data
@@ -59,20 +72,16 @@ A simple web application for restaurant fanatic
 
 ## Tech/framework used
 
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-
-![NodeJs](https://img.shields.io/badge/Node.js-v14.16.0-339933?style=for-the-badge&logo=Node.js)
-
-![mongoose](https://img.shields.io/badge/mongoose-v5.9.7-880000?style=for-the-badge&logo=mongoose)
-
-![bootstrap](https://img.shields.io/badge/bootstrap-v5.3.1-7952B3?style=for-the-badge&logo=bootstrap)
-
-![Express.js](https://img.shields.io/badge/express.js-v4.17.1-000000?style=for-the-badge&logo=express.js)
-
-![express_handlebars](https://img.shields.io/badge/express_handlebars-v4.0.2-f28500?style=for-the-badge&logo=express_handlebars)
-
-![body-parser](https://img.shields.io/badge/body_parser-v1.20.2-fffd7e?style=for-the-badge&logo=body_parser)
+- Node.js v14.16.0
+- express v4.17.1
+- body-parser v1.20.2
+- express-handlebars v4.0.2
+- mongoose v5.9.7
+- nanoid v3.3.6
+- dotenv v16.0.3
+- bcryptjs v2.4.3
+- connect-flash v0.1.1
+- express-session v1.17.1
+- passport v0.4.1
+- passport-facebook v3.0.0
+- passport-local v1.0.0
