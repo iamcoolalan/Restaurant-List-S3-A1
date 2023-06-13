@@ -18,7 +18,7 @@ router.post('/login', passport.authenticate('local', {
 
 router.get('/logout', (req, res) => {
   req.logOut()
-  req.flash('success_msg', '你已成功登出!')
+  req.flash('success_msg', 'Logout success!')
   res.redirect('/users/login')
 })
 
@@ -31,10 +31,10 @@ router.post('/register', (req, res) => {
   const errors = []
 
   if(!name || !email || !password || !confirmPassword ){
-    errors.push({ message: '所有欄位皆為必填。' })
+    errors.push({ message: 'All fields are required!' })
   }
   if(password !== confirmPassword){
-    errors.push({ message: '密碼與確認密碼不符。' })
+    errors.push({ message: 'password and confirm password not matched' })
   }
   if(errors.length){
     return res.render('register', {
@@ -49,7 +49,7 @@ router.post('/register', (req, res) => {
   User.findOne({ email })
     .then(user => {
       if (user) {
-        errors.push({ message: '此 Email 已經註冊過。' })
+        errors.push({ message: 'This email already exists' })
         return res.render('register', {
           errors,
           name,
