@@ -49,6 +49,12 @@ A simple web application for restaurant fanatic
    npm run seed
    ```   
 
+   ##### * we provide two user let you test
+   | name | email | password |
+   | :-: | :-: | :-: |
+   | user1 | user1@example.com | 12345678 |
+   | user2 | user2@example.com | 12345678 |
+
 6. after you created test data , keep typing
 
    ```bash
