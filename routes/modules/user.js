@@ -30,13 +30,13 @@ router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   const errors = []
 
-  if(!name || !email || !password || !confirmPassword ){
-    errors.push({ message: 'All fields are required!' })
+  if (!email || !password || !confirmPassword) {
+    errors.push({ message: 'Make sure you have filled in the Email, Password and Confirm Password ' })
   }
-  if(password !== confirmPassword){
+  if (password !== confirmPassword) {
     errors.push({ message: 'password and confirm password not matched' })
   }
-  if(errors.length){
+  if (errors.length) {
     return res.render('register', {
       errors,
       name,
@@ -57,10 +57,10 @@ router.post('/register', (req, res) => {
           password,
           confirmPassword
         })
-      } 
+      }
       return bcrypt
         .genSalt(10)
-        .then(salt => bcrypt.hash(password,salt))
+        .then(salt => bcrypt.hash(password, salt))
         .then(hash => {
           User.create({
             name,
@@ -68,8 +68,11 @@ router.post('/register', (req, res) => {
             password: hash
           })
         })
-        .then(() => res.redirect('/'))
-        .catch(err => console.log(err)) 
+        .then(() => {
+          req.flash('success_msg', 'Register success! You can login now!')
+          res.redirect('/users/login')
+        })
+        .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 })
