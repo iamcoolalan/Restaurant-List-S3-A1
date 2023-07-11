@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
   const newRestaurant = req.body
 
   return Restaurants.create(newRestaurant)
-    .then(() => res.status(302).redirect('/'))
+    .then(restaurant => res.status(302).redirect(`/restaurants/${restaurant._id}/edit`))
     .catch(
       error => {
         console.log(error)
@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
   const _id = req.params.id
   const userId = req.user._id
 
-  return Restaurants.findOne({_id, userId})
+  return Restaurants.findOne({ _id, userId })
     .lean()
     .then(restaurant => {
       if (!restaurant) {
@@ -72,9 +72,9 @@ router.put('/:id', (req, res) => {
 
   return Restaurants.findOne({ _id, userId })
     .then(restaurant => {
-      if(!restaurant){
+      if (!restaurant) {
         res.status(404).render('errorPage', { error: `Can't find any result that matches this ID` })
-      }else{
+      } else {
         Object.assign(restaurant, update)
         return restaurant.save()
       }
@@ -94,9 +94,9 @@ router.delete('/:id', (req, res) => {
 
   return Restaurants.findOne({ _id, userId })
     .then(restaurant => {
-      if(!restaurant){
+      if (!restaurant) {
         res.status(404).render('errorPage', { error: `Can't find any result that matches this ID` })
-      }else{
+      } else {
         restaurant.remove()
       }
     })
