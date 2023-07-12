@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
   const newRestaurant = req.body
 
   return Restaurants.create(newRestaurant)
-    .then(restaurant => res.status(302).redirect(`/restaurants/${restaurant._id}/edit`))
+    .then(restaurant => res.status(302).redirect('/'))
     .catch(
       error => {
         console.log(error)
@@ -79,7 +79,7 @@ router.put('/:id', (req, res) => {
         return restaurant.save()
       }
     })
-    .then(() => res.status(302).redirect(`/restaurants/${_id}/edit`))
+    .then(() => res.status(302).redirect(`/restaurants/${_id}`))
     .catch(
       error => {
         console.log(error)
