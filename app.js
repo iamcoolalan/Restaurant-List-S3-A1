@@ -16,7 +16,7 @@ require('./config/mongoose')
 
 //start express and set the port
 const app = express()
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 //setting template engine
 app.engine('hbs', exphbs({
@@ -56,6 +56,6 @@ app.use((req, res, next) => {
 app.use(routes)//setting routes
 
 //start and listen on the Express server
-app.listen(port, () => {
-  console.log(`App is running on http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`)
 })
